@@ -1,0 +1,38 @@
+{
+	"name": "MinnaCab",
+	"version": "0.0.1",
+	"author": {
+		"name": "Robee Shepherd",
+		"email": "robee_git@robeesworld.com"
+	},
+	"description": "A cross platform front end for emulators aimed at arcade cabinets",
+	"contributors": [
+	{
+		"name": "Robee Shepherd",
+		"email": "robee_git@robeesworld.com"
+	}
+	],
+	"main": "main.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/RobeeeJay/Minna-Cab.js.git"
+	},
+	"dependencies": {
+		"atom-shell": "^0.22.1",
+		"angular": "^1.3.15",
+		"angular-animate": "^1.3.15",
+		"angular-route": "^1.3.15",
+		"xml2js": "^0.4.6"
+	},
+	"keywords": [
+	"mame",
+	"arcade",
+	"cabinet",
+	"front-end",
+	"ui"
+	],
+	"license": "GPL",
+	"engine": {
+		"node": ">=0.12"
+	}
+}

@@ -1,0 +1,6 @@
+<div ng-controller="ctrlMame">
+	<p>{{ counter }}</p>
+	<ul>
+		<li ng-repeat="game in games" ng-click="launchGame(game)">{{ game.$.name }} - {{ game.description[0] }}</li>
+	</ul>
+</div>
