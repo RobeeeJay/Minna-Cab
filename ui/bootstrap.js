@@ -30,16 +30,20 @@ app.run(["$rootScope", function($rootScope) {
 
 app.controller("ctrlMame", ["$rootScope", "$scope", "$timeout", function ctrlMame($rootScope, $scope, $timeout) {
 	$scope.games = [];
+	$scope.mode = "Generating XML";
+
 	var mamepath = path.normalize(__dirname + "/../emulators/mame/mame64.exe");
-	var mame = spawn(mamepath, ["-listxml", "19*"]);
+	var mame = spawn(mamepath, ["-listxml"]);
 	var mamexml = "";
 	var parser = new xml2js.Parser();
 
 	parser.addListener("end", function(result) {
 		$timeout(function() {
-			$scope.games = _.filter(result.mame.game, function(value) {
+			/*$scope.games = _.filter(result.mame.game, function(value) {
 				return !value.$.isdevice;
 			});
+			$scope.games = $scope.games.slice(0, 30);*/
+			$scope.mode = "";
 		}, 0);
 	});
 	
@@ -53,7 +57,13 @@ app.controller("ctrlMame", ["$rootScope", "$scope", "$timeout", function ctrlMam
 	
 	mame.on("close", function (code) {
 		console.log("child process exited with code " + code);
-		parser.parseString(mamexml);
+		$timeout(function() {
+			$scope.mode = "Parsing XML";
+			
+			$timeout(function() {
+				parser.parseString(mamexml);
+			}, 0);
+		}, 0);
 	});
 	
 	$scope.launchGame = function(game) {
